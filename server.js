@@ -9,6 +9,8 @@ app.set("view engine", "ejs");
 // Specify the directory for your views
 app.set("views", "views");
 
+app.use(express.urlencoded({ extended: true })); // pour empecher req.body = undefined apres la post method du form
+
 // Middleware to serve static files from the "public" directory
 app.use(express.static("public"));
 

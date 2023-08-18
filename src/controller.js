@@ -32,5 +32,11 @@ const controller = {
       result: result,
     });
   },
+  loginPage: (req, res) => {
+    res.render("login");
+  },
+  loginPostPage: (req, res) => {
+    console.log(req.body);
+  },
 };
 module.exports = controller;
