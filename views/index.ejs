@@ -1,14 +1,14 @@
 <%- include('partials/header') %>
     <h1 class="text-danger">ACCUEIL / Liste de films</h1>
     <ul>
-      <%# Boucle JS avec ejs %> <% for(let movie of movies) {%>
-
-      <li>
-        <%# Affichage de variable js%>
-        <a href="/movie/<%=movie.url%>"><%= movie.title %></a>
-      </li>
-      <%}%>
+      <% movies.forEach(function(movie) { %>
+        <li>
+          <a href="/movie/<%= movie.url %>"><%= movie.title %></a>
+          <a href="/search"> rechercher </a>
+        </li>
+      <% }); %>
     </ul>
-    <ul></ul>
+    
+   
   </body>
 </html>

@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 3008;
+const port = 3000;
+const router = require("./src/router");
 
 // Initialize EJS with Express
 app.set("view engine", "ejs");
@@ -14,22 +15,24 @@ app.use(express.static("public"));
 // Import the JSON file
 const movies = require("./movies.json");
 
-app.get("/", (req, res) => {
-  // Render the "index" file, passing the "movies" data
-  res.render("index", { movies });
-});
+app.use(router);
+
+// app.get("/", (req, res) => {
+//   // Render the "index" file, passing the "movies" data
+//   res.render("index", { movies });
+// });
 
 // Dynamic route to retrieve movie information based on the movieName parameter
-app.get("/movie/:movieName", (req, res) => {
-  // Extract the movieName parameter from the URL
-  const movieUrl = req.params.movieName;
+// app.get("/movie/:movieName", (req, res) => {
+//   // Extract the movieName parameter from the URL
+//   const movieUrl = req.params.movieName;
 
-  // Find the movie in the "movies" array using the URL
-  const goodMovie = movies.find((movie) => movie.url === movieUrl);
+//   // Find the movie in the "movies" array using the URL
+//   const movie = movies.find((movie) => movie.url === movieUrl);
 
-  // Render the "movie" file, passing the movie object
-  res.render("movie", { movie: goodMovie });
-});
+//   // Render the "movie" file, passing the movie object
+//   res.render("movie", { movie: movie, movies });
+// });
 
 // Start the server
 app.listen(port, () => {
