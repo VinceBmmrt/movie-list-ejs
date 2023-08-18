@@ -1,0 +1,11 @@
+<%- include("partials/header") %>
+<h1 class="text-danger">Film récupéré en paramètre</h1>
+
+<% if (movie) { %> <%- include(movie.url) %> <% } else { %>
+<div>404</div>
+<% } %>
+
+<a href="/movie/<%= movie.url %>"><%= movie.title %></a>
+<p>Bienvenue sur la page du film ...</p>
+
+<%- include("partials/footer") %>
